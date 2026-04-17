@@ -1,6 +1,6 @@
 {
-  "name": "FlightTrack — Live Flight Status",
-  "short_name": "FlightTrack",
+  "name": "Trip Pilot — Live Flight Status",
+  "short_name": "Trip Pilot",
   "description": "Track any flight in real time by flight number or PNR",
   "start_url": "/",
   "display": "standalone",

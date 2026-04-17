@@ -208,6 +208,63 @@ function getMockFlight(flightNumber) {
 
   // Different scenarios keyed by common demo flight numbers
   const mockFlights = {
+    // ── Porter Airlines flights ──────────────────────────────────────────────
+    // Airborne: YTZ → YOW
+    PD215: {
+      flightNumber: 'PD215', callsign: 'POE215',
+      airline: 'Porter Airlines', airlineIata: 'PD',
+      status: 'airborne', rawStatus: 'active',
+      aircraft: { iata: 'E295', icao: 'E295', registration: 'C-GKQB', model: 'Embraer E195-E2' },
+      departure: { airport: 'Billy Bishop Toronto City Airport', iata: 'YTZ', scheduled: new Date(now.getTime() - 45 * 60000).toISOString(), estimated: new Date(now.getTime() - 45 * 60000).toISOString(), actual: new Date(now.getTime() - 45 * 60000).toISOString(), delay: 0, terminal: 'Main', gate: '7' },
+      arrival: { airport: 'Ottawa Macdonald–Cartier International', iata: 'YOW', scheduled: new Date(now.getTime() + 35 * 60000).toISOString(), estimated: new Date(now.getTime() + 35 * 60000).toISOString(), actual: null, delay: 0, terminal: 'D', gate: 'D12' },
+      position: { latitude: 44.1, longitude: -76.5, altitude: 7620, velocity: 220, heading: 55, onGround: false },
+    },
+
+    // Scheduled: YTZ → YUL
+    PD101: {
+      flightNumber: 'PD101', callsign: 'POE101',
+      airline: 'Porter Airlines', airlineIata: 'PD',
+      status: 'scheduled', rawStatus: 'scheduled',
+      aircraft: { iata: 'E295', icao: 'E295', registration: 'C-GKQF', model: 'Embraer E195-E2' },
+      departure: { airport: 'Billy Bishop Toronto City Airport', iata: 'YTZ', scheduled: new Date(now.getTime() + 2 * 3600000).toISOString(), estimated: new Date(now.getTime() + 2 * 3600000).toISOString(), actual: null, delay: 0, terminal: 'Main', gate: '3' },
+      arrival: { airport: 'Montréal–Trudeau International Airport', iata: 'YUL', scheduled: new Date(now.getTime() + 3.5 * 3600000).toISOString(), estimated: new Date(now.getTime() + 3.5 * 3600000).toISOString(), actual: null, delay: 0, terminal: 'D', gate: 'D31' },
+      position: null,
+    },
+
+    // Delayed: YTZ → EWR
+    PD402: {
+      flightNumber: 'PD402', callsign: 'POE402',
+      airline: 'Porter Airlines', airlineIata: 'PD',
+      status: 'delayed', rawStatus: 'delayed',
+      aircraft: { iata: 'E295', icao: 'E295', registration: 'C-GKQM', model: 'Embraer E195-E2' },
+      departure: { airport: 'Billy Bishop Toronto City Airport', iata: 'YTZ', scheduled: new Date(now.getTime() + 30 * 60000).toISOString(), estimated: new Date(now.getTime() + 105 * 60000).toISOString(), actual: null, delay: 75, terminal: 'Main', gate: '5' },
+      arrival: { airport: 'Newark Liberty International', iata: 'EWR', scheduled: new Date(now.getTime() + 2 * 3600000).toISOString(), estimated: new Date(now.getTime() + 3.25 * 3600000).toISOString(), actual: null, delay: 75, terminal: 'C', gate: 'C74' },
+      position: null,
+    },
+
+    // Boarding: YYZ → YHZ
+    PD789: {
+      flightNumber: 'PD789', callsign: 'POE789',
+      airline: 'Porter Airlines', airlineIata: 'PD',
+      status: 'boarding', rawStatus: 'boarding',
+      aircraft: { iata: 'E295', icao: 'E295', registration: 'C-GKQD', model: 'Embraer E195-E2' },
+      departure: { airport: 'Toronto Pearson International', iata: 'YYZ', scheduled: new Date(now.getTime() + 25 * 60000).toISOString(), estimated: new Date(now.getTime() + 25 * 60000).toISOString(), actual: null, delay: 0, terminal: '1', gate: 'D15' },
+      arrival: { airport: 'Halifax Stanfield International', iata: 'YHZ', scheduled: new Date(now.getTime() + 2.5 * 3600000).toISOString(), estimated: new Date(now.getTime() + 2.5 * 3600000).toISOString(), actual: null, delay: 0, terminal: 'Main', gate: '22' },
+      position: null,
+    },
+
+    // Landed: YTZ → BOS
+    PD550: {
+      flightNumber: 'PD550', callsign: 'POE550',
+      airline: 'Porter Airlines', airlineIata: 'PD',
+      status: 'landed', rawStatus: 'landed',
+      aircraft: { iata: 'E295', icao: 'E295', registration: 'C-GKQP', model: 'Embraer E195-E2' },
+      departure: { airport: 'Billy Bishop Toronto City Airport', iata: 'YTZ', scheduled: new Date(now.getTime() - 3 * 3600000).toISOString(), estimated: new Date(now.getTime() - 3 * 3600000).toISOString(), actual: new Date(now.getTime() - 3 * 3600000).toISOString(), delay: 0, terminal: 'Main', gate: '9' },
+      arrival: { airport: 'Boston Logan International', iata: 'BOS', scheduled: new Date(now.getTime() - 45 * 60000).toISOString(), estimated: new Date(now.getTime() - 45 * 60000).toISOString(), actual: new Date(now.getTime() - 40 * 60000).toISOString(), delay: 0, terminal: 'B', gate: 'B24' },
+      position: { latitude: 42.36, longitude: -71.01, altitude: 0, velocity: 0, heading: 0, onGround: true },
+    },
+
+    // ── Other airlines ───────────────────────────────────────────────────────
     // Airborne, on time: JFK → LAX
     EK203: {
       flightNumber: 'EK203', callsign: 'EK203',
