@@ -8,7 +8,7 @@ html, body, #root {
   margin: 0;
   padding: 0;
   min-height: 100vh;
-  background: #f0f6ff;
+  background: #fffbeb;
 }
 
 body {
@@ -17,15 +17,15 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Leaflet light overrides */
+/* Leaflet summer overrides */
 .leaflet-container {
-  background: #e8f0fe !important;
+  background: #fef3c7 !important;
   font-family: inherit;
 }
 
 .leaflet-popup-content-wrapper {
   background: #ffffff;
-  border: 1px solid rgba(59, 130, 246, 0.2);
+  border: 1px solid rgba(251, 146, 60, 0.3);
   border-radius: 12px;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
   color: #0f172a;

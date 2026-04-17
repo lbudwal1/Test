@@ -25,14 +25,14 @@ function RouteCard({ route, ui, isRTL }) {
   const avail = AVAIL_CONFIG[route.availability];
 
   return (
-    <div className={`border rounded-xl overflow-hidden transition-all duration-200 shadow-sm ${route.isAlternateDest ? 'border-purple-200 bg-purple-50' : 'border-blue-100 bg-white'}`}>
+    <div className={`border rounded-xl overflow-hidden transition-all duration-200 shadow-sm ${route.isAlternateDest ? 'border-purple-200 bg-purple-50' : 'border-orange-100 bg-white/80'}`}>
       <button
         onClick={() => setExpanded(e => !e)}
         className="w-full text-left p-4 flex items-center gap-3"
         dir={isRTL ? 'rtl' : 'ltr'}
       >
         {/* Route type badge */}
-        <span className={`shrink-0 px-2 py-0.5 rounded-full text-xs font-semibold border ${route.isAlternateDest ? 'bg-purple-100 text-purple-700 border-purple-300' : route.type === 'direct' ? 'bg-blue-100 text-blue-700 border-blue-300' : 'bg-slate-100 text-slate-600 border-slate-300'}`}>
+        <span className={`shrink-0 px-2 py-0.5 rounded-full text-xs font-semibold border ${route.isAlternateDest ? 'bg-purple-100 text-purple-700 border-purple-300' : route.type === 'direct' ? 'bg-orange-100 text-orange-700 border-orange-300' : 'bg-stone-100 text-stone-600 border-stone-300'}`}>
           {route.type === 'direct' ? ui.flightType.direct : route.stops.length > 0 ? `${ui.flightType.connecting} ${route.stops[0]?.iata}` : ui.flightType.direct}
         </span>
 
@@ -68,7 +68,7 @@ function RouteCard({ route, ui, isRTL }) {
       </button>
 
       {expanded && (
-        <div className="border-t border-blue-100 p-4 space-y-3 bg-slate-50" dir={isRTL ? 'rtl' : 'ltr'}>
+        <div className="border-t border-orange-100 p-4 space-y-3 bg-amber-50/50" dir={isRTL ? 'rtl' : 'ltr'}>
           {route.stops.length > 0 && (
             <div className="space-y-2">
               {route.stops.map(stop => (
@@ -151,11 +151,11 @@ export default function StandbyPanel({ flight, lang }) {
 
       {loading ? (
         <div className="flex items-center gap-3 p-4 text-slate-500 text-sm">
-          <span className="w-4 h-4 border-2 border-blue-200 border-t-blue-500 rounded-full animate-spin" />
+          <span className="w-4 h-4 border-2 border-orange-200 border-t-orange-500 rounded-full animate-spin" />
           Searching alternate routes…
         </div>
       ) : routes.length === 0 ? (
-        <p className="text-slate-500 text-sm p-4 bg-slate-50 rounded-xl border border-slate-200">{ui.noAlternates}</p>
+        <p className="text-stone-500 text-sm p-4 bg-amber-50 rounded-xl border border-amber-100">{ui.noAlternates}</p>
       ) : (
         <div className="space-y-2">
           {routes.map(route => (

@@ -8,7 +8,7 @@ function createPlaneIcon(heading = 0) {
   const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40">
     <g transform="translate(20,20) rotate(${heading - 90})">
       <path d="M0,-14 L3,-6 L12,-6 L12,-3 L3,-3 L3,5 L7,8 L7,11 L0,9 L-7,11 L-7,8 L-3,5 L-3,-3 L-12,-3 L-12,-6 L-3,-6 Z"
-        fill="#38bdf8" stroke="#0f172a" stroke-width="1"/>
+        fill="#f97316" stroke="#431407" stroke-width="1"/>
     </g>
   </svg>`;
   return L.divIcon({
@@ -75,7 +75,7 @@ export default function FlightMap({ flight }) {
         attributionControl={false}
       >
         <TileLayer
-          url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
+          url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
           attribution='&copy; <a href="https://carto.com/">CARTO</a>'
         />
 
@@ -89,7 +89,7 @@ export default function FlightMap({ flight }) {
             {position && depCoords && (
               <Polyline
                 positions={[depCoords, [position.latitude, position.longitude]]}
-                pathOptions={{ color: '#38bdf8', weight: 2.5, opacity: 0.8 }}
+                pathOptions={{ color: '#f97316', weight: 2.5, opacity: 0.9 }}
               />
             )}
           </>
@@ -137,7 +137,7 @@ export default function FlightMap({ flight }) {
 
       {/* Map overlay info */}
       {position && !position.onGround && (
-        <div className="absolute bottom-4 left-4 bg-slate-900/90 backdrop-blur-sm border border-slate-700/60 rounded-xl px-3 py-2 text-xs text-slate-300 z-[1000]">
+        <div className="absolute bottom-4 left-4 bg-orange-900/80 backdrop-blur-sm border border-orange-700/50 rounded-xl px-3 py-2 text-xs text-orange-100 z-[1000]">
           <div className="flex items-center gap-3">
             <span>Alt: <strong className="text-white">{Math.round((position.altitude || 0) * 3.281).toLocaleString()} ft</strong></span>
             <span>·</span>
@@ -149,8 +149,8 @@ export default function FlightMap({ flight }) {
       )}
 
       {!position && (
-        <div className="absolute inset-0 flex items-center justify-center bg-slate-900/60 backdrop-blur-sm z-[1000]">
-          <div className="text-center text-slate-400">
+        <div className="absolute inset-0 flex items-center justify-center bg-amber-900/40 backdrop-blur-sm z-[1000]">
+          <div className="text-center text-amber-100">
             <div className="text-3xl mb-2">✈</div>
             <div className="text-sm">Live position not available</div>
             <div className="text-xs text-slate-500 mt-1">OpenSky Network may not have data for this flight</div>
